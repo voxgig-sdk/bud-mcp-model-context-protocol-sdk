@@ -1,0 +1,149 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "MCP (Model Context Protocol) API",
+  "version": "1.0.0",
+  "contact": {
+   "name": "API Support",
+   "url": "http://www.thisisbud.com/support",
+   "email": "contact@thisisbud.com"
+  },
+  "x-logo": {
+   "url": "https://res.cloudinary.com/postman/image/upload/w_152,h_56,c_fit,f_auto,t_team_logo/v1/team/2baee78029d6ee9e2917981a7a70c621ab65d9cf13d44d3dbd042d3d2f0c9881"
+  },
+  "description": "The Bud API MCP is a remote Model Context Protocol server designed for use with AI/LLM driven agents. \n"
+ },
+ "servers": [
+  {
+   "url": "https://api-sandbox.thisisbud.com",
+   "description": "Bud sandbox"
+  }
+ ],
+ "paths": {
+  "/bud-api-mcp/url": {
+   "post": {
+    "tags": [
+     "MCP (Model Context Protocol)"
+    ],
+    "summary": "Create MCP (Model Context Protocol) URL",
+    "operationId": "beta_bud_api_mcp_url_post",
+    "description": "Generates a URL and customer specific authentication bearer token for an MCP Client to connect with. Currently in beta",
+    "security": [
+     {
+      "OAuth2": []
+     }
+    ],
+    "parameters": [
+     {
+      "in": "header",
+      "name": "X-Client-Id",
+      "schema": {
+       "type": "string"
+      },
+      "required": true,
+      "description": "The API Client Identifier (Service Application Identifier).",
+      "example": "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+     },
+     {
+      "in": "header",
+      "name": "X-Customer-Id",
+      "schema": {
+       "type": "string",
+       "format": "uuid"
+      },
+      "required": true,
+      "description": "A unique identifier for a Customer, as registered on Bud's platform.",
+      "example": "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+     },
+     {
+      "$ref": "#/components/parameters/HeaderTimezone"
+     }
+    ],
+    "responses": {
+     "201": {
+      "$ref": "#/components/responses/GenerateBudAPIMCPURLResponse"
+     },
+     "401": {
+      "description": "An unauthenticated request was received."
+     },
+     "5XX": {
+      "description": "An unexpected error occurred on the server side"
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "securitySchemes": {
+   "OAuth2": {
+    "type": "oauth2",
+    "flows": {
+     "clientCredentials": {
+      "tokenUrl": "/v1/oauth/token",
+      "scopes": {}
+     }
+    },
+    "description": "\nAuthentication flow:\n\n1. Perform OAuth2 Client Credentials authentication using API Credentials (`client_id`,`client_secret`) to obtain an `access_token` against `/v1/oauth/token` endpoint,\n2. Use `access_token` as Bearer Authorisation for every other API request,\n3. Include `X-Client-Id` (=client_id) within the header of every API request,\n4. Note that some of the requests may also require `X-Customer-Id` to be provided within the request header.\n\n### Examples\nObtain OAuth2 `access_token` and `refresh_token` using `grant_type=client_credentials` and HTTP Basic auth header\n\n```\ncurl --basic --user {{client_id}}:{{client_secret}} \\\n  -X POST https://api-sandbox.thisisbud.com/v1/oauth/token \\\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\n  -d grant_type=client_credentials\n```\n\nSuccessful response:\n```\n{\n  \"operation_id\": \"oauth_token_post\",\n  \"data\": {\n    \"access_token\": \"dd0c17e3fd6d2ce94aa091257a3ea393b4f9b5cf3d3e998f07dc9826da86ff15\",\n    \"token_type\": \"bearer\",\n    \"expires_in\": 3600,\n    \"refresh_token\": \"fac32cca7559d9f6e8f1dfe9a99c71fa1dcfeb482bedf287d7934d2667ae54b3\"\n  }\n}\n```\n\nRefresh `access_token` token using `refresh_token` against `/v1/oauth/token` endpoint with `grant_type=refresh_token`\n\n```\ncurl -X POST \\\n  https://api-sandbox.thisisbud.com/v1/oauth/token \\\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\n  -H 'X-Client-Id: {{client_id}}' \\\n  -d 'grant_type=refresh_token&refresh_token={{refresh_token}}'\n```\n\nSuccessful response:\n```\n{\n    \"operation_id\": \"oauth_token_post\",\n    \"data\": {\n        \"access_token\": \"cc0c17e3fd6d2ce94aa091257a3ea393b4f9b5cf3d3e998f07dc9826da86ff94\",\n        \"token_type\": \"bearer\",\n        \"expires_in\": 3600,\n        \"refresh_token\": \"ffc30cca7559d9f6e8f1dfe9a99c71fa1dcfeb482bedf287d7934d2667ae54b3\"\n    }\n}\n```\n"
+   }
+  },
+  "parameters": {
+   "HeaderTimezone": {
+    "in": "header",
+    "name": "X-Timezone",
+    "schema": {
+     "type": "string",
+     "format": "tz database identifier"
+    },
+    "required": true,
+    "description": "The [tz database identifier](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) for the user's timezone.",
+    "examples": {
+     "Los Angeles, CA, USA": {
+      "value": "US/Pacific"
+     },
+     "UK": {
+      "value": "Europe/London"
+     }
+    }
+   }
+  },
+  "responses": {
+   "GenerateBudAPIMCPURLResponse": {
+    "description": "Successful response containing the MCP URL and auth bearer token",
+    "content": {
+     "application/json": {
+      "schema": {
+       "type": "object",
+       "properties": {
+        "operation_id": {
+         "type": "string",
+         "enum": [
+          "beta_bud_api_mcp_url_post"
+         ]
+        },
+        "data": {
+         "type": "object",
+         "properties": {
+          "url": {
+           "type": "string",
+           "format": "uri"
+          },
+          "token": {
+           "type": "string"
+          }
+         }
+        }
+       }
+      },
+      "example": {
+       "operation_id": "beta_bud_api_mcp_url_post",
+       "data": {
+        "url": "https://api-sandbox-widget.thisisbud.com/bud-api-mcp/mcp",
+        "token": "<customer-specific-authentication-bearer-token>"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
