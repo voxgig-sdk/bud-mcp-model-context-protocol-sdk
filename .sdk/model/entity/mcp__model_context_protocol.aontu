@@ -1,0 +1,89 @@
+# Entity: mcp__model_context_protocol
+
+main: kit: entity: mcp__model_context_protocol: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: false
+      t: "`$OBJECT`"
+    }
+    operation_id: {
+      h: "Operation Id"
+      n: "operation_id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "mcp__model_context_protocol"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /bud-api-mcp/url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "US/Pacific"
+                k: "header"
+                n: "x_timezone"
+                or: "x_timezone"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/bud-api-mcp/url"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_timezone"
+            ]
+          }
+          s: [
+            {
+              lit: "bud-api-mcp"
+            }
+            {
+              lit: "url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

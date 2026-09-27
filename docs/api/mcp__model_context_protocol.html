@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>McpModelContextProtocol | MCP (Model Context Protocol) API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">MCP (Model Context Protocol) API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-mcp-model-context-protocol-sdk">voxgig-sdk/bud-mcp-model-context-protocol-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">MCP (Model Context Protocol) API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a aria-current="page" href="../api/mcp__model_context_protocol.html">McpModelContextProtocol</a><div class="nav-sections"><a class="nav-section" href="#post-bud-api-mcpurl">POST /bud-api-mcp/url</a></div></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="mcpmodelcontextprotocol">McpModelContextProtocol</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-bud-api-mcpurl"><code>/bud-api-mcp/url</code></a></td>
+<td><code>create</code></td>
+<td>Successful response containing the MCP URL and auth bearer token</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">created, err := client.McpModelContextProtocol(nil).Create(map[string]any{&quot;data&quot;: map[string]any{}, &quot;operation_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const created = await client.McpModelContextProtocol().create({ data: {}, operation_id: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local created, err = client:McpModelContextProtocol():create({ data = {}, operation_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$created = $client-&gt;McpModelContextProtocol()-&gt;create([&quot;data&quot; =&gt; [], &quot;operation_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">created = client.McpModelContextProtocol().create({ &quot;data&quot;: {}, &quot;operation_id&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const created = await client.McpModelContextProtocol().create({ data: {}, operation_id: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Data</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Operation Id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-bud-api-mcpurl" class="operation" data-method="post"><code>POST</code> /bud-api-mcp/url</h3>
+<p>Operation ID: <code>beta_bud_api_mcp_url_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Timezone</code> | <code>header</code> | <code>string (tz database identifier)</code> | Yes | The <a href="https://en.wikipedia.org/wiki/%60List_of_tz_database_time_zones%60#List">tz database identifier</a> for the user's timezone. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="201-successful-response-containing-the-mcp-url-and-auth-bearer-token" class="status" data-status="2xx">201: Successful response containing the MCP URL and auth bearer token</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.url</code></td>
+<td><code>string (uri)</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: beta_bud_api_mcp_url_post</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;token&quot;: &quot;&lt;customer-specific-authentication-bearer-token&gt;&quot;,
+    &quot;url&quot;: &quot;https://api-sandbox-widget.thisisbud.com/bud-api-mcp/mcp&quot;
+  },
+  &quot;operation_id&quot;: &quot;beta_bud_api_mcp_url_post&quot;
+}
+</code></pre>
+<h5 id="401-an-unauthenticated-request-was-received" class="status" data-status="4xx">401: An unauthenticated request was received</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side">5XX: An unexpected error occurred on the server side</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

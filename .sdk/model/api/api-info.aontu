@@ -1,0 +1,37 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "contact@thisisbud.com"
+        name: "API Support"
+        url: "http://www.thisisbud.com/support"
+      }
+      description: `The Bud API MCP is a remote Model Context Protocol server designed for use with AI/LLM driven agents. 
+`
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "OAuth2"
+        type: "oauth2"
+      }
+      servers: [
+        {
+          description: "Bud sandbox"
+          url: "https://api-sandbox.thisisbud.com"
+        }
+      ]
+      summary: "The Bud API MCP is a remote Model Context Protocol server designed for use with AI/LLM driven agents."
+      title: "MCP (Model Context Protocol) API"
+      version: "1.0.0"
+      website: "https://thisisbud.com"
+      "x-logo": {
+        url: "https://res.cloudinary.com/postman/image/upload/w_152,h_56,c_fit,f_auto,t_team_logo/v1/team/2baee78029d6ee9e2917981a7a70c621ab65d9cf13d44d3dbd042d3d2f0c9881"
+      }
+    }
+  }
+}
+

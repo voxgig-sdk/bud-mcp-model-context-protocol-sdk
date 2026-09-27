@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "mcp__model_context_protocol": {
+      "MCP__MODEL_CONTEXT_PROTOCOL00": {
+        "data": {},
+        "operation_id": "OPERATION01",
+        "id": "MCP__MODEL_CONTEXT_PROTOCOL00"
+      },
+      "MCP__MODEL_CONTEXT_PROTOCOL01": {
+        "data": {},
+        "operation_id": "OPERATION01",
+        "id": "MCP__MODEL_CONTEXT_PROTOCOL01"
+      },
+      "MCP__MODEL_CONTEXT_PROTOCOL02": {
+        "data": {},
+        "operation_id": "OPERATION01",
+        "id": "MCP__MODEL_CONTEXT_PROTOCOL02"
+      }
+    }
+  },
+  "new": {
+    "mcp__model_context_protocol": {
+      "mcp__model_context_protocol_ref01": {
+        "data": {},
+        "operation_id": "OPERATION01"
+      }
+    }
+  },
+  "requests": {
+    "POST /bud-api-mcp/url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

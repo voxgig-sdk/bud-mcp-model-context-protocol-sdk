@@ -1,0 +1,18 @@
+# BasicMcpModelContextProtocolFlow
+
+main: kit: flow: BasicMcpModelContextProtocolFlow:
+{
+  entity: "mcp__model_context_protocol",
+  kind: "basic",
+  name: "BasicMcpModelContextProtocolFlow",
+  step: [
+    {
+      i: {
+        ref: "mcp__model_context_protocol_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMcpModelContextProtocolFlow"
+}
